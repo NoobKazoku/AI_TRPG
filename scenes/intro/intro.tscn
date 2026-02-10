@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://db7uqtqvqp4dn"]
+
+[ext_resource type="Script" uid="uid://kief88kpnnn8" path="res://scripts/intro/Intro.cs" id="1_iatiw"]
+[ext_resource type="Texture2D" uid="uid://d0tcs4pj5rn3u" path="res://assets/art/textures/boot_start/made by noobkazoku.png" id="2_iatiw"]
+
+[sub_resource type="Animation" id="Animation_iatiw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_teox7"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 3),
+"transitions": PackedFloat32Array(1.75, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qeukb"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8twl8"]
+_data = {
+&"RESET": SubResource("Animation_iatiw"),
+&"fade_in": SubResource("Animation_teox7"),
+&"fade_out": SubResource("Animation_qeukb")
+}
+
+[node name="Intro" type="Node2D" unique_id=1858287004]
+script = ExtResource("1_iatiw")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1320227897]
+unique_name_in_owner = true
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = ExtResource("2_iatiw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2126208967]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1747996785]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_8twl8")

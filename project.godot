@@ -1,0 +1,72 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="GFramework-Godot-Template"
+config/tags=PackedStringArray("gamelab")
+run/main_scene="uid://6s2urcdmkpbt"
+config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
+config/icon="uid://p5dak2wsc1nk"
+config/save/setting_path="user://"
+config/save/save_path="user://saves"
+config/save/save_slot_prefix="slot_"
+config/save/save_file_name="save.json"
+
+[audio]
+
+buses/default_bus_layout="res://resource/project_bus_layout.tres"
+
+[autoload]
+
+GameEntryPoint="*res://global/game_entry_point.tscn"
+SceneRoot="*uid://bxquqjahyr8v2"
+UiRoot="*res://global/ui_root.tscn"
+GlobalInputController="*res://global/GlobalInputController.cs"
+AudioManager="*res://global/audio_manager.tscn"
+SceneTransitionManager="*uid://c5sxf7tcun6yq"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="GFramework-Godot-Template"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://global/": "orange",
+"res://resource/": "yellow",
+"res://scenes/": "green",
+"res://script_templates/": "blue",
+"res://scripts/": "teal"
+}
+
+[gui]
+
+theme/custom="uid://drg0lvsgoqfsc"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

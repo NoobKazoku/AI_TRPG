@@ -1,0 +1,58 @@
+# CI/CD工作流配置：构建.NET项目
+# 该工作流在push到main/master分支或创建pull request时触发
+name: CI - Build
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出源代码，设置fetch-depth为0以获取完整的git历史
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      # TruffleHog OSS 扫描步骤
+      # 使用 TruffleHog 工具扫描代码库中的敏感信息泄露，如API密钥、密码等
+      # 该步骤会比较基础分支和当前提交之间的差异，检测新增内容中是否包含敏感数据
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@v3.93.1
+        with:
+          # 扫描路径，. 表示扫描整个仓库
+          path: .
+          # 基础提交哈希，用于与当前提交进行比较
+          base: ${{ github.event.before }}
+          # 当前提交哈希，作为扫描的目标版本
+          head: ${{ github.sha }}
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      # 配置NuGet包缓存以加速后续构建
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+
+      # 执行NuGet包恢复操作
+      - name: Restore
+        run: dotnet restore
+      # 恢复.NET本地工具
+      - name: Restore .NET tools
+        run: dotnet tool restore
+      # Godot 项目通常使用 Debug 或 ExportDebug/ExportRelease 配置
+      - name: Build C# Project
+        run: dotnet build --no-restore

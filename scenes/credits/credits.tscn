@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b3oc5caltregr"]
+
+[ext_resource type="Script" uid="uid://046djw8e6h4c" path="res://scripts/credits/Credits.cs" id="1_8n0nl"]
+[ext_resource type="Theme" uid="uid://drg0lvsgoqfsc" path="res://resource/theme/project_theme.tres" id="1_dr3ri"]
+
+[node name="Credits" type="Control" unique_id=1555193164]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8n0nl")
+
+[node name="Background" type="ColorRect" parent="." unique_id=652325738]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12955844, 0.12955847, 0.12955844, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1960962027]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=267836349]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=931271196]
+layout_mode = 2
+theme = ExtResource("1_dr3ri")
+theme_override_font_sizes/font_size = 64
+text = "制作组"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Members" type="Label" parent="MarginContainer/VBoxContainer" unique_id=129727042]
+layout_mode = 2
+text = "开发团队：
+
+
+特别感谢：
+
+Godot引擎"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1209217710]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "返回主菜单"

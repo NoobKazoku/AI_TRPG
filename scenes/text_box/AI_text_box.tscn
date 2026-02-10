@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cktje2vpny1rj"]
+
+[node name="AITextBox" type="HBoxContainer" unique_id=1832788419]
+theme_override_constants/separation = 32
+
+[node name="主持人" type="Label" parent="." unique_id=999336360]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "主持人"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1280458317]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=837340042]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=837473138]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer" unique_id=1839504268]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=1602540426]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="对话文本" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer" unique_id=1551656607]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "对话文本"
+autowrap_mode = 3

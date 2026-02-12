@@ -3,7 +3,7 @@ using GFramework.Core.Abstractions.controller;
 using GFramework.SourceGenerators.Abstractions.logging;
 using GFramework.SourceGenerators.Abstractions.rule;
 
-
+namespace AITRPG;
 [ContextAware]
 [Log]
 public partial class AI_TRPG :Control,IController
@@ -22,13 +22,38 @@ public partial class AI_TRPG :Control,IController
 		SendButton.Pressed += OnSendButtonPressed;
 	}
 
-
 	/// <summary>
-	/// 处理发送消息时的逻辑，可以被发送按钮或回车键触发
+	/// 每帧更新时的回调方法
 	/// </summary>
-	public void SendMessage()
+	public override void _Process(double delta)
 	{
 		
+	}
+
+	/// <summary>
+	/// 处理用户发送消息时的逻辑，可以被发送按钮或回车键触发
+	/// </summary>
+	public void UserSendMessage()
+	{
+		// 如果输入框为空，则不发送消息
+		if (string.IsNullOrWhiteSpace(InputBox.Text))return;
+
+		// 加载用户消息气泡场景
+		var playerTextBoxScene = ResourceLoader.Load<PackedScene>("res://scenes/text_box/player_text_box.tscn");
+
+		// 实例化用户消息气泡场景
+		var playerTextBoxInstance = playerTextBoxScene.Instantiate();
+
+		// 设置用户消息气泡的文本为输入框中的内容
+		var dialogTextLabel = playerTextBoxInstance.GetNode<Label>("%对话文本");
+		dialogTextLabel.Text = InputBox.Text;
+
+		// 将实例添加到聊天框中
+		ChatBox.AddChild(playerTextBoxInstance);
+		
+		// 清空输入框
+		InputBox.Text = "";
+
 	}
 
 	/// <summary>
@@ -36,7 +61,7 @@ public partial class AI_TRPG :Control,IController
 	/// </summary>
 	private void OnSendButtonPressed()
 	{
-		SendMessage();
+		UserSendMessage();
 	}
 }
 

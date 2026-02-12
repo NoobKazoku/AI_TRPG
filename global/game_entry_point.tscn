@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://fb017woaakjg" path="res://scenes/test/home.tscn" id="9_iumd8"]
 [ext_resource type="Texture2D" uid="uid://6aq7b0pqd1dp" path="res://assets/art/textures/boot_start/godot.jpg" id="13_fgqit"]
 [ext_resource type="PackedScene" uid="uid://db7uqtqvqp4dn" path="res://scenes/intro/intro.tscn" id="13_hjx06"]
+[ext_resource type="PackedScene" uid="uid://b08s20twyfmt" path="res://scenes/AI_TRPG/AI_TRPG.tscn" id="14_d4hg6"]
 [ext_resource type="Script" uid="uid://ls8nkxn3gipd" path="res://scripts/core/resource/TextureConfig.cs" id="14_hjx06"]
 
 [sub_resource type="Resource" id="Resource_pn3ws"]
@@ -74,6 +75,12 @@ script = ExtResource("7_iiepj")
 Scene = ExtResource("13_hjx06")
 metadata/_custom_type_script = "uid://5mfgbvaive07"
 
+[sub_resource type="Resource" id="Resource_1y7ah"]
+script = ExtResource("7_iiepj")
+SceneKey = 5
+Scene = ExtResource("14_d4hg6")
+metadata/_custom_type_script = "uid://5mfgbvaive07"
+
 [sub_resource type="Resource" id="Resource_k055p"]
 script = ExtResource("14_hjx06")
 Texture = ExtResource("13_fgqit")
@@ -81,5 +88,5 @@ Texture = ExtResource("13_fgqit")
 [node name="GameEntryPoint" type="Node" unique_id=729277825]
 script = ExtResource("1_a14y6")
 UiPageConfigs = Array[Object]([SubResource("Resource_pn3ws"), SubResource("Resource_f22d5"), SubResource("Resource_inr81"), SubResource("Resource_rtbxk"), SubResource("Resource_d4hg6")])
-GameSceneConfigs = Array[Object]([SubResource("Resource_1yddw"), SubResource("Resource_fgqit"), SubResource("Resource_hjx06"), SubResource("Resource_iumd8"), SubResource("Resource_qdo7l")])
+GameSceneConfigs = Array[Object]([SubResource("Resource_1yddw"), SubResource("Resource_fgqit"), SubResource("Resource_hjx06"), SubResource("Resource_iumd8"), SubResource("Resource_qdo7l"), SubResource("Resource_1y7ah")])
 TextureConfigs = Array[Object]([SubResource("Resource_k055p")])

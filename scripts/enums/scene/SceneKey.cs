@@ -1,4 +1,4 @@
-﻿namespace GFrameworkGodotTemplate.scripts.enums.scene;
+namespace GFrameworkGodotTemplate.scripts.enums.scene;
 
 /// <summary>
 ///     定义游戏场景的键值枚举

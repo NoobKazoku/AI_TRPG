@@ -13,6 +13,11 @@ public partial class AI_TRPG :Control,IController
 	private Button SendButton => GetNode<Button>("%发送按钮");
 
 
+
+	// 加载用户消息气泡场景
+	public PackedScene playerTextBoxScene = ResourceLoader.Load<PackedScene>("res://scenes/text_box/player_text_box.tscn");
+	// 加载AI消息气泡场景
+	public PackedScene AITextBoxScene = ResourceLoader.Load<PackedScene>("res://scenes/text_box/AI_text_box.tscn");
 	/// <summary>
 	/// 节点准备就绪时的回调方法
 	/// 在节点添加到场景树后调用
@@ -33,13 +38,10 @@ public partial class AI_TRPG :Control,IController
 	/// <summary>
 	/// 处理用户发送消息时的逻辑，可以被发送按钮或回车键触发
 	/// </summary>
-	public void UserSendMessage()
+	public void PlayerSendMessage()
 	{
 		// 如果输入框为空，则不发送消息
 		if (string.IsNullOrWhiteSpace(InputBox.Text))return;
-
-		// 加载用户消息气泡场景
-		var playerTextBoxScene = ResourceLoader.Load<PackedScene>("res://scenes/text_box/player_text_box.tscn");
 
 		// 实例化用户消息气泡场景
 		var playerTextBoxInstance = playerTextBoxScene.Instantiate();
@@ -61,7 +63,7 @@ public partial class AI_TRPG :Control,IController
 	/// </summary>
 	private void OnSendButtonPressed()
 	{
-		UserSendMessage();
+		PlayerSendMessage();
 	}
 }
 

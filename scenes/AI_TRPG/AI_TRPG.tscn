@@ -34,25 +34,25 @@ custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1446197356]
+[node name="对话框" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1446197356]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="对话框" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Control" unique_id=354960132]
-unique_name_in_owner = true
+[node name="对话" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/对话框" unique_id=354960132]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/Control/对话框" unique_id=840988422]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/对话框/对话" unique_id=840988422]
 layout_mode = 2
 
-[node name="AITextBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Control/对话框" unique_id=1832788419 instance=ExtResource("2_2x67b")]
+[node name="AITextBox" parent="MarginContainer/HBoxContainer/VBoxContainer/对话框/对话" unique_id=1832788419 instance=ExtResource("2_2x67b")]
 layout_mode = 2
 
-[node name="PlayerTextBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Control/对话框" unique_id=939020584 instance=ExtResource("3_2x67b")]
+[node name="PlayerTextBox" parent="MarginContainer/HBoxContainer/VBoxContainer/对话框/对话" unique_id=939020584 instance=ExtResource("3_2x67b")]
 layout_mode = 2
 
 [node name="输入文本框" type="TextEdit" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=35142590]

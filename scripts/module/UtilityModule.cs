@@ -1,4 +1,4 @@
-﻿using GFramework.Core.Abstractions.architecture;
+﻿﻿using GFramework.Core.Abstractions.architecture;
 using GFramework.Game.Abstractions.data;
 using GFramework.Game.architecture;
 using GFramework.Game.data;
@@ -38,5 +38,8 @@ public class UtilityModule : AbstractModule
                 AutoBackup = true
             }));
         architecture.RegisterUtility(new SaveStorageUtility());
+        
+        // 注册AI代理服务
+        architecture.RegisterUtility(new AgentService());
     }
 }

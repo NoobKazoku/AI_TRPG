@@ -2,13 +2,16 @@ using Godot;
 using GFramework.Core.Abstractions.controller;
 using GFramework.SourceGenerators.Abstractions.logging;
 using GFramework.SourceGenerators.Abstractions.rule;
+using GFrameworkGodotTemplate.scripts.events.AI;
+using GFrameworkGodotTemplate.scripts.command.AI;
+using GFramework.Core.extensions;
 
 namespace AITRPG;
 [ContextAware]
 [Log]
 public partial class AI_TRPG :Control,IController
 {
-	private VBoxContainer ChatBox => GetNode<VBoxContainer>("%对话框");
+	private ScrollContainer ChatBox => GetNode<ScrollContainer>("%对话框");
 	private TextEdit InputBox => GetNode<TextEdit>("%输入文本框");
 	private Button SendButton => GetNode<Button>("%发送按钮");
 
@@ -25,14 +28,9 @@ public partial class AI_TRPG :Control,IController
 	public override void _Ready()
 	{
 		SendButton.Pressed += OnSendButtonPressed;
-	}
 
-	/// <summary>
-	/// 每帧更新时的回调方法
-	/// </summary>
-	public override void _Process(double delta)
-	{
-		
+		// 监听AI回复事件
+		this.RegisterEvent<AIResponseReadyEvent>(OnAIResponseReady);
 	}
 
 	/// <summary>
@@ -52,6 +50,18 @@ public partial class AI_TRPG :Control,IController
 
 		// 将实例添加到聊天框中
 		ChatBox.AddChild(playerTextBoxInstance);
+
+		// 滚动到底部
+		ChatBox.ScrollVertical = (int)ChatBox.GetVScrollBar().MaxValue;
+
+		// 保存用户消息用于发送Command
+		string userMessage = InputBox.Text;
+		
+		// 清空输入框
+		InputBox.Text = "";
+		
+		// 发送AI对话Command
+		this.SendCommand(new AIChatCommand(new AIChatCommandInput(userMessage)));
 		
 		// 清空输入框
 		InputBox.Text = "";
@@ -64,6 +74,21 @@ public partial class AI_TRPG :Control,IController
 	private void OnSendButtonPressed()
 	{
 		PlayerSendMessage();
+	}
+
+	/// <summary>
+	/// 处理AI回复事件
+	/// </summary>
+	private void OnAIResponseReady(AIResponseReadyEvent e)
+	{
+		// 显示AI回复
+		var aiTextBoxInstance = AITextBoxScene.Instantiate();
+		var dialogTextLabel = aiTextBoxInstance.GetNode<Label>("%对话文本");
+		dialogTextLabel.Text = e.AIResponse;
+		ChatBox.AddChild(aiTextBoxInstance);
+		
+		// 滚动到底部
+		ChatBox.ScrollVertical = (int)ChatBox.GetVScrollBar().MaxValue;
 	}
 }
 

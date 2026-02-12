@@ -39,15 +39,20 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Control" unique_id=354960132]
+[node name="对话框" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Control" unique_id=354960132]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 32
 
-[node name="AITextBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Control/VBoxContainer" unique_id=1832788419 instance=ExtResource("2_2x67b")]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/Control/对话框" unique_id=840988422]
 layout_mode = 2
 
-[node name="PlayerTextBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Control/VBoxContainer" unique_id=939020584 instance=ExtResource("3_2x67b")]
+[node name="AITextBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Control/对话框" unique_id=1832788419 instance=ExtResource("2_2x67b")]
+layout_mode = 2
+
+[node name="PlayerTextBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Control/对话框" unique_id=939020584 instance=ExtResource("3_2x67b")]
 layout_mode = 2
 
 [node name="输入文本框" type="TextEdit" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=35142590]
@@ -57,6 +62,20 @@ layout_mode = 2
 theme = ExtResource("2_0bebx")
 placeholder_text = "请输入文本..."
 wrap_mode = 1
+
+[node name="发送按钮" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/输入文本框" unique_id=843926650]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.90925926
+anchor_top = 0.85833335
+anchor_right = 0.99814814
+anchor_bottom = 0.9916667
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "发送"
+metadata/_edit_use_anchors_ = true
 
 [node name="Control2" type="Control" parent="MarginContainer/HBoxContainer" unique_id=502586133]
 layout_mode = 2

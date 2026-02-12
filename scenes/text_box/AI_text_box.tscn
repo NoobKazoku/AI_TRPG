@@ -32,7 +32,8 @@ theme_override_constants/margin_bottom = 16
 
 [node name="对话文本" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer" unique_id=1551656607]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(32, 24)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "对话文本"
 autowrap_mode = 3

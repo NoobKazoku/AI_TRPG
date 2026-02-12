@@ -33,7 +33,6 @@ text = "对话文本"
 autowrap_mode = 3
 
 [node name="玩家" type="Label" parent="." unique_id=1344542312]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 text = "玩家"

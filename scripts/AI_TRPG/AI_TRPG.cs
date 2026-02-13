@@ -12,6 +12,7 @@ namespace AITRPG;
 public partial class AI_TRPG :Control,IController
 {
 	private ScrollContainer ChatBox => GetNode<ScrollContainer>("%对话框");
+	private VBoxContainer ChatContent => GetNode<VBoxContainer>("%对话框/对话");
 	private TextEdit InputBox => GetNode<TextEdit>("%输入文本框");
 	private Button SendButton => GetNode<Button>("%发送按钮");
 
@@ -49,10 +50,10 @@ public partial class AI_TRPG :Control,IController
 		dialogTextLabel.Text = InputBox.Text;
 
 		// 将实例添加到聊天框中
-		ChatBox.AddChild(playerTextBoxInstance);
+		ChatContent.AddChild(playerTextBoxInstance);
 
 		// 滚动到底部
-		ChatBox.ScrollVertical = (int)ChatBox.GetVScrollBar().MaxValue;
+		CallDeferred(nameof(ScrollToBottom));
 
 		// 保存用户消息用于发送Command
 		string userMessage = InputBox.Text;
@@ -71,7 +72,7 @@ public partial class AI_TRPG :Control,IController
 	/// <summary>
 	/// 发送按钮按下时的回调方法
 	/// </summary>
-	private void OnSendButtonPressed()
+	public void OnSendButtonPressed()
 	{
 		PlayerSendMessage();
 	}
@@ -85,11 +86,21 @@ public partial class AI_TRPG :Control,IController
 		var aiTextBoxInstance = AITextBoxScene.Instantiate();
 		var dialogTextLabel = aiTextBoxInstance.GetNode<Label>("%对话文本");
 		dialogTextLabel.Text = e.AIResponse;
-		ChatBox.AddChild(aiTextBoxInstance);
+		ChatContent.AddChild(aiTextBoxInstance); 
 		
 		// 滚动到底部
+		CallDeferred(nameof(ScrollToBottom));
+	}
+
+/// <summary>
+/// 滚动聊天框到底部
+/// </summary>
+public void ScrollToBottom()
+	{
 		ChatBox.ScrollVertical = (int)ChatBox.GetVScrollBar().MaxValue;
 	}
 }
+
+
 
 

@@ -27,7 +27,7 @@
         </PackageReference>
         <PackageReference Include="GeWuYou.GFramework" Version="0.0.177" />
         <PackageReference Include="GeWuYou.GFramework.Godot" Version="0.0.177" />
-        <PackageReference Include="GeWuYou.GFramework.Godot.SourceGenerators" Version="0.0.177" />
+        <PackageReference Include="GeWuYou.GFramework.Godot.SourceGenerators" Version="0.0.189" />
         <PackageReference Include="GeWuYou.GFramework.SourceGenerators" Version="0.0.177" />
         <PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.260209.1" />
         <PackageReference Include="Microsoft.Agents.AI.Abstractions" Version="1.0.0-preview.260209.1" />
